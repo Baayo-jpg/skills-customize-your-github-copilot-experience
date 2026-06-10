@@ -3,7 +3,6 @@ const path = require("path");
 
 const [id, title, description] = process.argv.slice(2);
 const configPath = path.resolve(__dirname, "../../../../config.json");
-const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
 
 if (!id || !title || !description) {
   console.error(
@@ -12,6 +11,7 @@ if (!id || !title || !description) {
   process.exit(1);
 }
 
+const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
 const dueDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split("T")[0];
 
 config.assignments.push({
